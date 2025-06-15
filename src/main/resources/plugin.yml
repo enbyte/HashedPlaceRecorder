@@ -1,0 +1,3 @@
+name: HashedPlaceRecorder
+main: com.github.enbyte.HashedPlaceRecorder.HashedPlaceRecorder
+version: 1.0.0
