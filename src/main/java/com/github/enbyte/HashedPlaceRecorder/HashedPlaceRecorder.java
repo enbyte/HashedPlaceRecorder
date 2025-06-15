@@ -19,10 +19,12 @@ import org.bukkit.event.block.BlockPlaceEvent;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.bukkit.scheduler.BukkitScheduler;
 
+// I FUCKING LOVE SIXTEEN IMPORTS TO DO TWO THINGS!!! I LOVE THE JAVA PROGRAMMING LANGUAGE!!
+
 public final class HashedPlaceRecorder extends JavaPlugin implements Listener {
 
 	@Override
-	public void onEnable() {
+	public void onEnable() { // Called at startup
 		getServer().getPluginManager().registerEvents(this, this);
 	}
 	
@@ -31,7 +33,7 @@ public final class HashedPlaceRecorder extends JavaPlugin implements Listener {
 		getLogger().info("onDisable has been invoked!");
 	}
 	
-	private static String bytesToHex(byte[] hash) {
+	private static String bytesToHex(byte[] hash) { // Hex-encode a bytearray
         StringBuilder hexString = new StringBuilder(2 * hash.length);
         for (byte b : hash) {
             String hex = Integer.toHexString(0xff & b);
@@ -41,9 +43,9 @@ public final class HashedPlaceRecorder extends JavaPlugin implements Listener {
             hexString.append(hex);
         }
         return hexString.toString();
-    }
+    	}
 	
-	private static void writeHashedPlaceLocation(String path, String hash) {
+	private static void writeHashedPlaceLocation(String path, String hash) { // write hash to newline in path
 		File file = new File(path);
 		BufferedWriter writer = null;
 		
@@ -65,7 +67,7 @@ public final class HashedPlaceRecorder extends JavaPlugin implements Listener {
 		}
 	}
 	
-	private static String doChainedHashing(String toHash, int iterations) throws NoSuchAlgorithmException {
+	private static String doChainedHashing(String toHash, int iterations) throws NoSuchAlgorithmException { // repeatedly hash toHash iterations times
 		MessageDigest digest = MessageDigest.getInstance("SHA-256");
 		String currentHash = toHash;
 		
@@ -78,7 +80,7 @@ public final class HashedPlaceRecorder extends JavaPlugin implements Listener {
 	}
 	
 	@EventHandler(priority = EventPriority.MONITOR) // Just listens, can't modify events
-	public void onPlace(BlockPlaceEvent event) throws NoSuchAlgorithmException {
+	public void onPlace(BlockPlaceEvent event) throws NoSuchAlgorithmException { // Event handler
 		Block placedBlock = event.getBlock();
 		Location placedLocation = placedBlock.getLocation();
 		
