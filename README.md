@@ -6,7 +6,7 @@ Extremely simple Spigot plugin that stops the building of swastikas while also p
 
 1) When someone places a block, the plugin gets their username as well as the x, y, and z.
 2) It hashes the x,y,z together 50 times
-3) It writes the line <username>,hash; to the `hashed.locations` file
+3) It writes the line username,hash; to the `hashed.locations` file
 4) That's it
 
 ### What is a hash function?
